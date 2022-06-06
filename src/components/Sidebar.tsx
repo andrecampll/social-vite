@@ -1,4 +1,6 @@
-import { Box, Image, Link, Text, Flex, Button } from "@chakra-ui/react";
+import { PencilLine } from 'phosphor-react';
+
+import { Box, Image, Text, Flex, Button } from "@chakra-ui/react";
 
 export const Sidebar = () => (
   <Box
@@ -17,18 +19,34 @@ export const Sidebar = () => (
     <Flex
       flexDir="column"
       alignItems="center"
+      mt="calc(0px - 1.5rem - 6px)"
     >
+      <Image
+        src="https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg"
+        w="calc(3rem + 12px)"
+        h="calc(3rem + 12px)"
+        borderRadius="8"
+        border="4px solid"
+        borderColor="gray.800"
+        outline="2px solid"
+        outlineColor="green.500"
+      />
+
       <Text
         fontWeight="bold"
         as="strong"
-        color="white"
+        color="gray.100"
+        lineHeight="1.6"
+        mt="1rem"
       >
-        John Doe
+        Naruto Uzumaki
       </Text>
 
       <Text
         as="span"
-        color="white"
+        color="gray.400"
+        lineHeight="1.6"
+        fontSize="0.875rem"
       >
         Web Developer
       </Text>
@@ -49,10 +67,14 @@ export const Sidebar = () => (
         fontWeight="bold"
         color="green.500"
         cursor="pointer"
-        _hover={{}}
+        leftIcon={<PencilLine size="20" />}
+        _hover={{
+          background: "green.500",
+          color: "white",
+        }}
         _active={{}}
       >
-        Editar seu perfil
+        Edit your profile
       </Button>
     </Box>
   </Box>
