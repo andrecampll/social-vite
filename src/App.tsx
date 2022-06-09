@@ -30,12 +30,10 @@ export function App() {
           <Box as="main">
             <Post
               author="John Doe"
-              content="Um post massa"
             />
 
             <Post
               author="John Doe"
-              content="Um post massa"
             />
           </Box>
         </Grid>

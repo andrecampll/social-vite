@@ -13,6 +13,7 @@ export const theme = extendTheme({
       "900": "#121214",
     },
     green: {
+      "300": "#00B37E",
       "500": "#00875f",
     }
   }
