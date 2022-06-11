@@ -1,4 +1,4 @@
-import { Box, Image, Link, Text, Flex } from "@chakra-ui/react";
+import { Box, Image, Link, Text, Flex, Textarea, Button } from "@chakra-ui/react";
 
 type Props = {
   author: string;
@@ -101,6 +101,65 @@ export const Post = ({ author }: Props) => (
           #novoprojeto
         </Link>
       </Text>
+    </Box>
+
+    <Box
+      as="form"
+      mt="1.5rem"
+      pt="1.5rem"
+      borderTop="1px solid"
+      borderColor="gray.600"
+      
+      __css={{
+        "&:focus-within footer": {
+          visibility: "visible",
+          maxH: "none"
+        }
+      }}
+    >
+      <Text
+        as="strong"
+        lineHeight="1.6rem"
+        color="gray.100"
+      >
+        Leave your feedback
+      </Text>
+
+      <Textarea
+        placeholder="Write your comment..."
+        background="gray.900"
+        resize="none"
+        borderRadius="8px"
+        color="gray.100"
+        lineHeight={1.4}
+        mt="1.4rem"
+        _hover={{
+          borderColor: "gray.500"
+        }}
+      />
+
+      <Box
+        as="footer"
+        visibility="hidden"
+        maxH="0"
+      >
+        <Button
+          type="submit"
+          fontWeight="bold"
+          color="white"
+          mt="1rem"
+          p="1rem 1.5rem"
+          background="green.500"
+          cursor="pointer"
+          _hover={{
+            background: "green.500",
+            color: "white",
+          }}
+          _active={{}}
+        >
+          Comment
+        </Button>
+      </Box>
     </Box>
   </Box>
 )
