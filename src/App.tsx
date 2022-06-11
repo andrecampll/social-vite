@@ -14,6 +14,13 @@ export function App() {
         background="#121214"
         w="100%"
         h="100vh"
+        outline="transparent"
+        __css={{
+          ":focus": {
+            outline: "transparent !important",
+            boxShadow: "0 0 0 2px green.500"
+          }
+        }}
       >
         <Header />
 
