@@ -13,8 +13,9 @@ export function App() {
       <Box
         background="#121214"
         w="100%"
-        h="100vh"
         outline="transparent"
+        display="flex"
+        flexDir="column"
         __css={{
           ":focus": {
             outline: "transparent !important",

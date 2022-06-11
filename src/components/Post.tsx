@@ -1,4 +1,5 @@
 import { Box, Image, Link, Text, Flex, Textarea, Button } from "@chakra-ui/react";
+import { Comment } from "./Comment";
 
 type Props = {
   author: string;
@@ -160,6 +161,12 @@ export const Post = ({ author }: Props) => (
           Comment
         </Button>
       </Box>
+    </Box>
+
+    <Box mt="2rem">
+      <Comment />
+      <Comment />
+      <Comment />
     </Box>
   </Box>
 )
