@@ -1,6 +1,7 @@
 import { PencilLine } from 'phosphor-react';
 
 import { Box, Image, Text, Flex, Button } from "@chakra-ui/react";
+import { Avatar } from './Avatar';
 
 export const Sidebar = () => (
   <Box
@@ -21,15 +22,8 @@ export const Sidebar = () => (
       alignItems="center"
       mt="calc(0px - 1.5rem - 6px)"
     >
-      <Image
-        src="https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg"
-        w="calc(3rem + 12px)"
-        h="calc(3rem + 12px)"
-        borderRadius="8"
-        border="4px solid"
-        borderColor="gray.800"
-        outline="2px solid"
-        outlineColor="green.500"
+      <Avatar
+        url="https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg"
       />
 
       <Text
