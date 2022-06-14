@@ -7,9 +7,10 @@ type Props = {
     name: string;
   };
   content: string;
+  onDeleteComment: () => void;
 }
 
-export const Comment = ({ user, content }: Props) => (
+export const Comment = ({ user, content, onDeleteComment }: Props) => (
   <Flex
     mt="1.5rem"
     gap="1rem"
@@ -64,6 +65,7 @@ export const Comment = ({ user, content }: Props) => (
             size="sm"
             color="gray.400"
             fontSize="16"
+            onClick={onDeleteComment}
             _hover={{
               background: "gray.800"
             }}
