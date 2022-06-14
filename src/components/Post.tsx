@@ -1,7 +1,7 @@
 import { Box, Link, Text, Flex, Textarea, Button } from "@chakra-ui/react";
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { v4 } from 'uuid';
 
@@ -45,15 +45,31 @@ export const Post = ({ author, content, publishedAt }: Props) => {
   })
   
   const handleAddComment = useCallback(
-    (content: string) => setComments(state => [...state, {
-      id: v4(),
-      content,
-      user: {
-        name: "Naruto",
-        avatar_url: "https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg",
-      }
-      }]), [setComments, comments]
-    );
+    (content: string) => setComments(state =>
+      [
+        ...state,
+        {
+          id: v4(),
+          content,
+          user: {
+            name: "Naruto",
+            avatar_url: "https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg",
+          }
+        }
+      ]
+    ),
+    [setComments]
+  );
+
+  const handleDeleteComment = useCallback(
+    (id: string) =>
+      setComments(
+        state => state.filter(comment => comment.id !== id)
+      ),
+      [setComments]
+  );
+
+  const isNewCommentInput = useMemo(() => !text.length, [text]);
 
   return (
     <Box
@@ -165,6 +181,7 @@ export const Post = ({ author, content, publishedAt }: Props) => {
         </Text>
   
         <Textarea
+          value={text}
           onChange={e => setText(e.target.value)}
           placeholder="Write your comment..."
           background="gray.900"
@@ -191,6 +208,7 @@ export const Post = ({ author, content, publishedAt }: Props) => {
             p="1rem 1.5rem"
             background="green.500"
             cursor="pointer"
+            disabled={isNewCommentInput}
             _hover={{
               background: "green.500",
               color: "white",
@@ -204,7 +222,11 @@ export const Post = ({ author, content, publishedAt }: Props) => {
   
       <Box mt="2rem">
         {comments.map(comment => (
-          <Comment key={comment.id} {...comment} />
+          <Comment
+            key={comment.id}
+            onDeleteComment={() => handleDeleteComment(comment.id)}
+            {...comment}
+          />
         ))}
       </Box>
     </Box>
