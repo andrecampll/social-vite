@@ -25,6 +25,7 @@ type Props = {
   };
   publishedAt: Date;
   content: {
+    id: string;
     type: string;
     content: string;
   }[];
@@ -116,7 +117,7 @@ export const Post = ({ author, content, publishedAt }: Props) => {
         {content.map(item => {
           if (item.type === 'link')
             return (
-              <Text as="p" mt="1rem">
+              <Text key={item.id} as="p" mt="1rem">
                 <Link
                   fontWeight="bold"
                   color="green.500"
@@ -130,7 +131,7 @@ export const Post = ({ author, content, publishedAt }: Props) => {
             )
   
           return (
-            <Text as="p" mt="1rem">
+            <Text key={item.id} as="p" mt="1rem">
               {item.content}
             </Text>
           )

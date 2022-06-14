@@ -5,10 +5,11 @@ import { theme } from './styles/theme'
 import { Post } from './components/Post'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
+import { v4 } from 'uuid'
 
 const posts = [
   {
-    id: 1,
+    id: v4(),
     author: {
       name: "Naruto",
       avatar_url: "https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg",
@@ -16,14 +17,17 @@ const posts = [
     },
     content: [
       {
+        id: v4(),
         type: "paragraph",
         content: "Fala galeraa 👋"
       },
       {
+        id: v4(),
         type: "paragraph",
         content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀"
       },
       {
+        id: v4(),
         type: "link",
         content: "jane.design/doctorcare"
       }
@@ -31,7 +35,7 @@ const posts = [
     publishedAt: new Date()
   },
   {
-    id: 2,
+    id: v4(),
     author: {
       name: "Naruto",
       avatar_url: "https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg",
@@ -39,14 +43,17 @@ const posts = [
     },
     content: [
       {
+        id: v4(),
         type: "paragraph",
         content: "Fala galeraa 👋"
       },
       {
+        id: v4(),
         type: "paragraph",
         content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀"
       },
       {
+        id: v4(),
         type: "link",
         content: "jane.design/doctorcare"
       }
