@@ -1,13 +1,21 @@
 import { Flex, Box, Button, Image, Text } from "@chakra-ui/react";
 import { ThumbsUp, Trash } from "phosphor-react";
 
-export const Comment = () => (
+type Props = {
+  user: {
+    avatar_url: string;
+    name: string;
+  };
+  content: string;
+}
+
+export const Comment = ({ user, content }: Props) => (
   <Flex
     mt="1.5rem"
     gap="1rem"
   >
     <Image
-      src="https://github.com/andrecampll.png"
+      src={user.avatar_url}
       w="3rem"
       h="3rem"
       borderRadius="8"
@@ -35,7 +43,7 @@ export const Comment = () => (
               lineHeight={1.6}
               color="gray.100"
             >
-              John Doe
+              {user.name}
             </Text>
             <Box
               as="time"
@@ -71,7 +79,7 @@ export const Comment = () => (
           color="gray.300"
           mt="1rem"
         >
-          Great, congratulations!
+          {content}
         </Text>
       </Box>
 
