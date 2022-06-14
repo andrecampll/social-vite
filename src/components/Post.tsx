@@ -1,9 +1,21 @@
 import { Box, Link, Text, Flex, Textarea, Button } from "@chakra-ui/react";
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
+import { useCallback, useState } from "react";
+
+import { v4 } from 'uuid';
 
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
+
+type _Comment = {
+  id: string;
+  user: {
+    avatar_url: string;
+    name: string;
+  };
+  content: string;
+}
 
 type Props = {
   author: {
@@ -19,6 +31,9 @@ type Props = {
 }
 
 export const Post = ({ author, content, publishedAt }: Props) => {
+  const [text, setText] = useState('');
+  const [comments, setComments] = useState<_Comment[]>([]);
+
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR
   })
@@ -27,6 +42,17 @@ export const Post = ({ author, content, publishedAt }: Props) => {
     locale: ptBR,
     addSuffix: true
   })
+  
+  const handleAddComment = useCallback(
+    (content: string) => setComments(state => [...state, {
+      id: v4(),
+      content,
+      user: {
+        name: "Naruto",
+        avatar_url: "https://i.pinimg.com/originals/22/af/95/22af95e42aa2f137014e38b87dc0d714.jpg",
+      }
+      }]), [setComments, comments]
+    );
 
   return (
     <Box
@@ -117,7 +143,11 @@ export const Post = ({ author, content, publishedAt }: Props) => {
         pt="1.5rem"
         borderTop="1px solid"
         borderColor="gray.600"
-        
+        onSubmit={(e: any) => {
+          e.preventDefault();
+          handleAddComment(text);
+          return setText('')
+        }}
         __css={{
           "&:focus-within footer": {
             visibility: "visible",
@@ -134,6 +164,7 @@ export const Post = ({ author, content, publishedAt }: Props) => {
         </Text>
   
         <Textarea
+          onChange={e => setText(e.target.value)}
           placeholder="Write your comment..."
           background="gray.900"
           resize="none"
@@ -171,9 +202,9 @@ export const Post = ({ author, content, publishedAt }: Props) => {
       </Box>
   
       <Box mt="2rem">
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map(comment => (
+          <Comment key={comment.id} {...comment} />
+        ))}
       </Box>
     </Box>
   );
